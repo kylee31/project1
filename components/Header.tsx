@@ -14,6 +14,9 @@ export default function Header() {
 
   const handleSubmit = async () => {
     setSearchWord(inputValue);
+    if (inputValue === "") {
+      setSearchWord("대한민국");
+    }
   };
 
   useEffect(() => {
@@ -79,6 +82,9 @@ const InputSet = styled.div`
   justify-content: right;
   width: 100%;
   height: 100%;
+  &:focus {
+    color: transparent;
+  }
 `;
 
 const InputBox = styled.input`

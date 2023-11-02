@@ -6,7 +6,7 @@ interface SearchWord{
 }
 
 export const useSearchWord=create<SearchWord>(set=>({
-    searchWord:"",
+    searchWord:"대한민국",
     setSearchWord:(txt:string)=>{
         set(()=>({searchWord:txt}));
     },
