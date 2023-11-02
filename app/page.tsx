@@ -1,14 +1,23 @@
 "use client";
 
-import theme from "@/styles/theme";
-import styled from "styled-components";
+import Calendar from "@/components/Calendar";
+import Header from "@/components/Header";
+import Map from "@/components/Map";
+import Memo from "@/components/Memo";
+import RecommendField from "@/components/RecommendField";
 
 export default function Home() {
-  return <Div>project setting...</Div>;
+  return (
+    <div>
+      <Header />
+      <div style={{ display: "flex" }}>
+        <Map />
+        <Calendar />
+      </div>
+      <div style={{ display: "flex" }}>
+        <RecommendField />
+        <Memo />
+      </div>
+    </div>
+  );
 }
-
-const Div = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: ${(props) => props.theme.colors.white};
-`;
