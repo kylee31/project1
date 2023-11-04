@@ -5,7 +5,9 @@ const theme = {
     },
     colors: {
         white: '#ffffff',
-        black: '#000000'
+        black: '#000000',
+        lightgray: '#f4f4f4',
+        gray: '#808080'
     },
     weight: {
         thin: 100,
@@ -19,9 +21,9 @@ const theme = {
         Black: 900
     },
     size: {
-        small: '10rem',
-        medium: '20rem',
-        large: '30rem'
+        small: '0.8rem',
+        medium: '1rem',
+        large: '2rem'
     }
 }
 

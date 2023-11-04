@@ -55,13 +55,9 @@ export default function Map() {
 }
 
 const Container = styled.div`
-  width: 70%;
+  width: 100%;
   height: calc(70vh - 4rem);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
-
 const MapContainer = styled.div`
   width: 100%;
   height: 100%;

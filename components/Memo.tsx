@@ -9,7 +9,7 @@ export default function Memo() {
 }
 
 const Container = styled.div`
-  width: 30%;
+  width: 100%;
   height: 30vh;
   display: flex;
   justify-content: center;

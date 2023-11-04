@@ -93,6 +93,7 @@ const InputBox = styled.input`
   border: 1.5px solid black;
   padding-left: 0.5rem;
   margin-right: 0.7rem;
+  font-size: ${(props) => props.theme.size.small};
 `;
 
 const AirPlaneBtn = styled.button`

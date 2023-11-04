@@ -1,23 +1,24 @@
 "use client";
 
-import Calendar from "@/components/Calendar";
 import Header from "@/components/Header";
-import Map from "@/components/Map";
-import Memo from "@/components/Memo";
-import RecommendField from "@/components/RecommendField";
+import LeftSection from "@/section/LeftSection";
+import RightSection from "@/section/RightSection";
+import styled from "styled-components";
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <div style={{ display: "flex" }}>
-        <Map />
-        <Calendar />
-      </div>
-      <div style={{ display: "flex" }}>
-        <RecommendField />
-        <Memo />
-      </div>
+      <Container>
+        <LeftSection />
+        <RightSection />
+      </Container>
     </div>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+`;

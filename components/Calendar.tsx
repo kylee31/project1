@@ -9,7 +9,7 @@ export default function Calendar() {
 }
 
 const Container = styled.div`
-  width: 30%;
+  width: 100%;
   height: calc(70vh - 4rem);
   display: flex;
   justify-content: center;
