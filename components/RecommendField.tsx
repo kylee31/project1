@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function RecommendField() {
   const [tapMenu, setTapMenu] = useState(0);
-  const menuList = ["추천장소", "날씨"];
+  const menuList = ["날씨", "추천장소"];
 
   const selectMenu = (idx: number) => {
     setTapMenu(idx);
@@ -27,8 +27,8 @@ export default function RecommendField() {
         })}
       </Menu>
       <Box>
-        {0 === tapMenu && <RecommendTable />}
-        {1 === tapMenu && <Weather />}
+        {0 === tapMenu && <Weather />}
+        {1 === tapMenu && <RecommendTable />}
       </Box>
     </Container>
   );
@@ -76,4 +76,5 @@ const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 1rem 0 1rem;
 `;

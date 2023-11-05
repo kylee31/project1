@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    console.log(searchWord);
+    // console.log(searchWord);
   }, [searchWord]);
 
   return (
