@@ -3,8 +3,10 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import styled from "styled-components";
 import { ChangeEvent, useState } from "react";
+import { EventClickArg } from "@fullcalendar/core/index.js";
 
 type Inputs = {
+  id?: string;
   title: string;
   start: string;
   end: string;
@@ -15,13 +17,17 @@ const defaultData = {
   title: "",
   start: "",
   end: "",
-  editable: true,
+  // editable: true,
 };
 
 export default function Calendar() {
   const [isModal, setIsModal] = useState(false);
   const [inputs, setInputs] = useState<Inputs>(defaultData);
   const [eventData, setEventData] = useState<Inputs[]>([]);
+  //삭제하기 위해 고유 id 부여하기
+  //좋은 코드는 아니라고 생각.
+  //string을 다시 number로 바꾸는 등 비효율적이다
+  const [id, setId] = useState("0");
 
   const { title, start, end } = inputs;
 
@@ -40,15 +46,25 @@ export default function Calendar() {
   };
 
   const handleEvent = () => {
+    const newEvent = { ...inputs, id: id };
     setInputs({
       title: "",
       start: "",
       end: "",
-      editable: true,
+      // editable: true,
     });
-    setEventData([...eventData, inputs]);
+    setEventData([newEvent, ...eventData]);
+    setId((Number(id) + 1).toString());
     handleClick();
-    console.log(inputs);
+  };
+
+  const handelDelete = (info: EventClickArg) => {
+    if (window.confirm("일정을 삭제할까요?")) {
+      //TODO: 클릭한 이벤트 삭제하기(eventData에서도 삭제하기)
+      info.event.remove();
+      const restData = eventData.filter((item) => item.id !== info.event.id);
+      setEventData(restData);
+    }
   };
 
   return (
@@ -57,9 +73,9 @@ export default function Calendar() {
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
-        droppable={true}
         locale={"ko"}
         events={eventData}
+        eventClick={handelDelete}
       />
       {isModal && (
         <ModalBox>
@@ -128,6 +144,9 @@ const Container = styled.div`
   .fc-event {
     background-color: ${(props) => props.theme.mainColors.green};
     border: 0;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
