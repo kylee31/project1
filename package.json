@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
     "@types/axios": "^0.14.0",
     "@types/styled-components": "^5.1.29",
     "axios": "^1.6.0",

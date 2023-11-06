@@ -87,4 +87,5 @@ const TbodyTr = styled.tr`
     background-color: ${(props) => props.theme.colors.lightgray};
   }
   font-size: ${(props) => props.theme.size.small};
+  height: 2rem;
 `;

@@ -7,6 +7,7 @@ import {
 } from "@/states/stores";
 import axios from "axios";
 import { useEffect } from "react";
+import styled from "styled-components";
 
 export default function RecommendTable() {
   const columns = [
@@ -50,12 +51,11 @@ export default function RecommendTable() {
   return (
     <>
       {searchWord === "대한민국" && (
-        <>
-          추천 행사를 보고 싶다면, &nbsp;
-          {<span style={{ color: "red" }}> {"단어"}</span>}로 검색해주세요!
-          🧐&nbsp;
+        <div>
+          추천 행사를 보고 싶다면,
+          <span style={{ color: "red" }}> {"단어"}</span>로 검색해주세요! 🧐
           <span style={{ color: "gray" }}> (ex. 서울, 제주, 경기, 고양)</span>
-        </>
+        </div>
       )}
       {searchWord !== "대한민국" && isGetRecommendData && (
         <ReactTable
@@ -70,11 +70,20 @@ export default function RecommendTable() {
         />
       )}
       {isGetRecommendData === false && (
-        <>
-          이 곳에는 아직 추천장소가 없어요😥 Tip! 조금 더 넓은 지역명으로
-          검색해보세요!
-        </>
+        <NoData>
+          이 곳에는 아직 추천장소가 없어요😥
+          <div
+            style={{ color: "gray" }}
+          >{`(Tip! 조금 더 넓은 지역명으로 검색해보세요)`}</div>
+        </NoData>
       )}
     </>
   );
 }
+
+const NoData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

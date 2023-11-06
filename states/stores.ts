@@ -46,7 +46,7 @@ interface IsToggle{
 }
 
 export const useIsToggle=create<IsToggle>(set=>({
-  isToggle:false,
+  isToggle:true,
   setIsToggle:(tog)=>{set(()=>({isToggle:tog}))}
 }))
 

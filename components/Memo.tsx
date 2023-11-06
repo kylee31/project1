@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Memo() {
   return (
     <Container>
-      <>메모</>
+      <Title>MEMO</Title>
     </Container>
   );
 }
@@ -13,6 +13,10 @@ const Container = styled.div`
   height: 30vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: 1px solid black;
+  padding: 1rem;
+  background-color: ${(props) => props.theme.colors.lightgray};
+`;
+
+const Title = styled.div`
+  font-weight: ${(props) => props.theme.weight.bold};
 `;

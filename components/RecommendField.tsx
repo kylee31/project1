@@ -56,7 +56,7 @@ const Menu = styled.div`
 `;
 
 const ToggleBtn = styled.div`
-  width: 2rem;
+  width: 2.5rem;
   height: 1.5rem;
   position: absolute;
   background-color: black;

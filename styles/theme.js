@@ -21,6 +21,7 @@ const theme = {
         Black: 900
     },
     size: {
+        smaller: "0.6rem",
         small: '0.8rem',
         medium: '1rem',
         large: '2rem'
