@@ -19,6 +19,12 @@ export default function Header() {
     }
   };
 
+  const handleKeyDown = (e: any) => {
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
+
   // useEffect(() => {
   //   // console.log(searchWord);
   // }, [searchWord]);
@@ -38,6 +44,7 @@ export default function Header() {
             placeholder="경기도 고양시 일산서구"
             value={inputValue}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
           />
           <AirPlaneBtn onClick={handleSubmit}>
             <Image src="/imgs/airport.png" alt="airport" priority fill />
