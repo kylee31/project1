@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { useEffect } from "react";
-import { useSearchWord } from "@/states/stores";
+import { useIsToggle, useSearchWord } from "@/states/stores";
 
 declare global {
   interface Window {
@@ -11,6 +11,7 @@ declare global {
 
 export default function Map() {
   const { searchWord } = useSearchWord();
+  const { isToggle } = useIsToggle();
 
   useEffect(() => {
     const mapScript = document.createElement("script");
@@ -45,18 +46,18 @@ export default function Map() {
       });
     };
     mapScript.addEventListener("load", onLoadKakaoMap);
-  }, [searchWord]);
+  }, [searchWord, isToggle]);
 
   return (
-    <Container>
+    <Container $isToggle={isToggle}>
       <MapContainer id="map"></MapContainer>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $isToggle: boolean }>`
   width: 100%;
-  height: calc(70vh - 4rem);
+  height: ${(props) => (props.$isToggle ? "calc(70vh - 4rem)" : "100%")};
 `;
 const MapContainer = styled.div`
   width: 100%;

@@ -1,42 +1,51 @@
 import styled from "styled-components";
 import RecommendTable from "./RecommendTable";
 import Weather from "./Weather";
-import { useState } from "react";
+import { useIsToggle, useTapMenu } from "@/states/stores";
 
 export default function RecommendField() {
-  const [tapMenu, setTapMenu] = useState(0);
-  const menuList = ["날씨", "추천장소"];
+  const { tapMenu, setTapMenu } = useTapMenu();
+  //toggle에 따라 위의 map컴포넌트 height 조절해야 하므로 store로 상태관리
+  const { isToggle, setIsToggle } = useIsToggle();
+  const menuList = ["추천장소", "날씨"];
 
   const selectMenu = (idx: number) => {
     setTapMenu(idx);
   };
 
+  const handleClick = () => {
+    isToggle ? setIsToggle(false) : setIsToggle(true);
+  };
+
   return (
-    <Container>
-      <Menu>
-        {menuList.map((item, idx) => {
-          return (
-            <Tap
-              key={"menu" + idx}
-              className={idx === tapMenu ? "current" : "sub"}
-              onClick={() => selectMenu(idx)}
-            >
-              {item}
-            </Tap>
-          );
-        })}
-      </Menu>
-      <Box>
-        {0 === tapMenu && <Weather />}
-        {1 === tapMenu && <RecommendTable />}
-      </Box>
-    </Container>
+    <>
+      <Container $isToggle={isToggle}>
+        <Menu>
+          {menuList.map((item, idx) => {
+            return (
+              <Tap
+                key={"menu" + idx}
+                className={idx === tapMenu ? "current" : "sub"}
+                onClick={() => selectMenu(idx)}
+              >
+                {item}
+              </Tap>
+            );
+          })}
+          <ToggleBtn onClick={handleClick}>{isToggle ? "off" : "on"}</ToggleBtn>
+        </Menu>
+        <Box $isToggle={isToggle}>
+          {0 === tapMenu && <RecommendTable />}
+          {1 === tapMenu && <Weather />}
+        </Box>
+      </Container>
+    </>
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $isToggle: boolean }>`
   width: 100%;
-  height: 35vh;
+  height: ${(props) => (props.$isToggle ? "35vh" : "5vh")};
   position: absolute;
   z-index: 1;
   bottom: 0;
@@ -44,6 +53,24 @@ const Container = styled.div`
 
 const Menu = styled.div`
   display: flex;
+`;
+
+const ToggleBtn = styled.div`
+  width: 2rem;
+  height: 1.5rem;
+  position: absolute;
+  background-color: black;
+  top: 0rem;
+  right: 2%;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: ${(props) => props.theme.weight.semiBold};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Tap = styled.span`
@@ -70,11 +97,13 @@ const Tap = styled.span`
   }
 `;
 
-const Box = styled.div`
+const Box = styled.div<{ $isToggle: boolean }>`
   width: 100%;
-  height: 30vh;
+  height: ${(props) => (props.$isToggle ? "30vh" : "0vh")};
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 1rem 0 1rem;
+  overflow: hidden;
+  background-color: white;
+  padding: ${(props) => (props.$isToggle ? "1rem 1rem 0 1rem" : "0")};
 `;
