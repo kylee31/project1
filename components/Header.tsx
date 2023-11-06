@@ -14,10 +14,13 @@ export default function Header() {
 
   const handleSubmit = async () => {
     setSearchWord(inputValue);
+    if (inputValue === "") {
+      setSearchWord("대한민국");
+    }
   };
 
   useEffect(() => {
-    console.log(searchWord);
+    // console.log(searchWord);
   }, [searchWord]);
 
   return (
@@ -79,6 +82,9 @@ const InputSet = styled.div`
   justify-content: right;
   width: 100%;
   height: 100%;
+  &:focus {
+    color: transparent;
+  }
 `;
 
 const InputBox = styled.input`
@@ -87,6 +93,7 @@ const InputBox = styled.input`
   border: 1.5px solid black;
   padding-left: 0.5rem;
   margin-right: 0.7rem;
+  font-size: ${(props) => props.theme.size.small};
 `;
 
 const AirPlaneBtn = styled.button`
