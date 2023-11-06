@@ -1,29 +1,101 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
+import interactionPlugin from "@fullcalendar/interaction";
 import styled from "styled-components";
+import { ChangeEvent, useState } from "react";
+
+type Inputs = {
+  title: string;
+  start: string;
+  end: string;
+  editable?: boolean;
+};
+
+const defaultData = {
+  title: "",
+  start: "",
+  end: "",
+  editable: true,
+};
 
 export default function Calendar() {
-  const examData = [
-    {
-      title: "일정",
-      start: "2023-11-07",
-      end: "2023-11-11",
-      editable: true,
-    },
-  ];
+  const [isModal, setIsModal] = useState(false);
+  const [inputs, setInputs] = useState<Inputs>(defaultData);
+  const [eventData, setEventData] = useState<Inputs[]>([]);
+
+  const { title, start, end } = inputs;
 
   //일정추가하는 기능 만들기
+  const handleClick = () => {
+    // console.log("일정추가");
+    isModal ? setIsModal(false) : setIsModal(true);
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const handleEvent = () => {
+    setInputs({
+      title: "",
+      start: "",
+      end: "",
+      editable: true,
+    });
+    setEventData([...eventData, inputs]);
+    handleClick();
+    console.log(inputs);
+  };
 
   return (
     <Container>
+      <Button onClick={handleClick}>일정추가</Button>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         droppable={true}
         locale={"ko"}
-        events={examData}
+        events={eventData}
       />
+      {isModal && (
+        <ModalBox>
+          <Modal>
+            <Bar>
+              <XButton onClick={handleClick}>❌</XButton>
+            </Bar>
+            <Box>
+              <label htmlFor="title">일정 내용</label>
+              <InputBox
+                name="title"
+                id="title"
+                onChange={handleChange}
+                value={title}
+              ></InputBox>
+              <label htmlFor="start">시작일</label>
+              <InputBox
+                name="start"
+                id="start"
+                onChange={handleChange}
+                placeholder={"2023-11-06"}
+                value={start}
+              ></InputBox>
+              <label htmlFor="end">종료일</label>
+              <InputBox
+                name="end"
+                id="end"
+                onChange={handleChange}
+                placeholder={"2023-11-09"}
+                value={end}
+              ></InputBox>
+              <AddButton onClick={handleEvent}>추가</AddButton>
+            </Box>
+          </Modal>
+        </ModalBox>
+      )}
     </Container>
   );
 }
@@ -34,6 +106,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   .fc {
     width: 90%;
     height: 90%;
@@ -55,5 +128,86 @@ const Container = styled.div`
   .fc-event {
     background-color: ${(props) => props.theme.mainColors.green};
     border: 0;
+  }
+`;
+
+const Button = styled.button`
+  width: 3rem;
+  height: 1.3rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: black;
+  color: white;
+  font-size: ${(props) => props.theme.size.smaller};
+  position: absolute;
+  top: 1.2rem;
+  left: 8.3rem;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ModalBox = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Modal = styled.div`
+  z-index: 10;
+  width: 60%;
+  height: 50%;
+  background-color: white;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Bar = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: right;
+`;
+
+const XButton = styled.div`
+  width: 1rem;
+  height: 1rem;
+  font-size: ${(props) => props.theme.size.small};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const Box = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: ${(props) => props.theme.size.small};
+`;
+
+const InputBox = styled.input`
+  border: 2px solid lightgray;
+  margin-bottom: 0.3rem;
+  border-radius: 0.3rem;
+`;
+
+const AddButton = styled.button`
+  // height: 1rem;
+  margin: 0 3rem;
+  border: 0;
+  background-color: black;
+  border-radius: 1rem;
+  margin-top: 0.4rem;
+  color: white;
+  &:hover {
+    cursor: pointer;
   }
 `;

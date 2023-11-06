@@ -24,7 +24,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: ${(props) => props.theme.weight.bold};
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const MemoBox = styled.textarea`
