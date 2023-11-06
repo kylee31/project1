@@ -51,11 +51,14 @@ export default function RecommendTable() {
   return (
     <>
       {searchWord === "대한민국" && (
-        <div>
-          추천 행사를 보고 싶다면,
-          <span style={{ color: "red" }}> {"단어"}</span>로 검색해주세요! 🧐
-          <span style={{ color: "gray" }}> (ex. 서울, 제주, 경기, 고양)</span>
-        </div>
+        <FirstBox>
+          <div>
+            추천 장소를 보고 싶다면,
+            <span style={{ color: "red" }}> {"지역명(단어)"}</span>으로
+            검색해주세요! 🧐
+          </div>
+          <div style={{ color: "gray" }}> (ex. 서울, 제주, 경기, 고양)</div>
+        </FirstBox>
       )}
       {searchWord !== "대한민국" && isGetRecommendData && (
         <ReactTable
@@ -70,18 +73,25 @@ export default function RecommendTable() {
         />
       )}
       {isGetRecommendData === false && (
-        <NoData>
+        <NoDataBox>
           이 곳에는 아직 추천장소가 없어요😥
           <div
             style={{ color: "gray" }}
           >{`(Tip! 조금 더 넓은 지역명으로 검색해보세요)`}</div>
-        </NoData>
+        </NoDataBox>
       )}
     </>
   );
 }
 
-const NoData = styled.div`
+const FirstBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NoDataBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

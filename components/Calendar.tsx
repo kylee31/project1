@@ -33,7 +33,6 @@ export default function Calendar() {
 
   //일정추가하는 기능 만들기
   const handleClick = () => {
-    // console.log("일정추가");
     isModal ? setIsModal(false) : setIsModal(true);
   };
 
@@ -53,9 +52,11 @@ export default function Calendar() {
       end: "",
       // editable: true,
     });
-    setEventData([newEvent, ...eventData]);
-    setId((Number(id) + 1).toString());
-    handleClick();
+    newEvent.title !== "" && newEvent.title !== "" && newEvent.title !== ""
+      ? (setEventData([newEvent, ...eventData]),
+        setId((Number(id) + 1).toString()),
+        handleClick())
+      : window.alert("빈 칸을 다 채워주세요!");
   };
 
   const handelDelete = (info: EventClickArg) => {
@@ -213,20 +214,22 @@ const Box = styled.div`
 `;
 
 const InputBox = styled.input`
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
+  padding: 0.1rem;
   margin-bottom: 0.3rem;
   border-radius: 0.3rem;
 `;
 
 const AddButton = styled.button`
   // height: 1rem;
-  margin: 0 3rem;
+  margin: 0 4rem;
   border: 0;
-  background-color: black;
+  background-color: gray;
   border-radius: 1rem;
   margin-top: 0.4rem;
   color: white;
   &:hover {
     cursor: pointer;
   }
+  font-weight: ${(props) => props.theme.weight.semiBold};
 `;
