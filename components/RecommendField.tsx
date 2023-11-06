@@ -62,7 +62,7 @@ const ToggleBtn = styled.div`
   background-color: black;
   top: 0rem;
   right: 2%;
-  border-radius: 50%;
+  border-radius: 1rem;
   color: white;
   display: flex;
   justify-content: center;

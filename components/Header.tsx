@@ -19,9 +19,9 @@ export default function Header() {
     }
   };
 
-  useEffect(() => {
-    // console.log(searchWord);
-  }, [searchWord]);
+  // useEffect(() => {
+  //   // console.log(searchWord);
+  // }, [searchWord]);
 
   return (
     <Box>
