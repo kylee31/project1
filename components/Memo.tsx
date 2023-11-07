@@ -35,4 +35,13 @@ const MemoBox = styled.textarea`
   border: 0;
   outline: 0;
   resize: none;
+  &::-webkit-scrollbar {
+    width: 0.3rem;
+    background-color: ${(props) => props.theme.colors.lightgray};
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 0.2rem;
+    background-color: gray;
+    border-radius: 1rem;
+  }
 `;
