@@ -77,3 +77,25 @@ export const useIsGetRecommendData=create<IsGetRecommendData>(set=>({
   isGetRecommendData:true,
   setIsGetRecommendData:(tog)=>{set(()=>({isGetRecommendData:tog}))}
 }))
+
+//로그인 여부
+interface IsLogIn{
+  isLogIn:boolean;
+  setIsLogIn:(tog:boolean)=>void;
+}
+
+export const useIsLogIn=create<IsLogIn>(set=>({
+  isLogIn:false,
+  setIsLogIn:(tog)=>(set(()=>({isLogIn:tog})))
+}))
+
+//로그인 모달창 닫기
+interface IsLogInModal{
+  isLogInModal:boolean,
+  setIsLogInModal:(tog:boolean)=>void
+}
+
+export const useIsLogInModal=create<IsLogInModal>(set=>({
+  isLogInModal:false,
+  setIsLogInModal:(tog)=>(set(()=>({isLogInModal:tog})))
+}))
