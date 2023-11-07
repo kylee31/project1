@@ -4,6 +4,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import styled from "styled-components";
 import { ChangeEvent, useState } from "react";
 import { EventClickArg } from "@fullcalendar/core/index.js";
+import Image from "next/image";
 
 type Inputs = {
   id?: string;
@@ -82,7 +83,9 @@ export default function Calendar() {
         <ModalBox>
           <Modal>
             <Bar>
-              <XButton onClick={handleClick}>❌</XButton>
+              <XButton onClick={handleClick}>
+                <Image src="/imgs/xlogo.png" alt="" width={12} height={11} />
+              </XButton>
             </Bar>
             <Box>
               <label htmlFor="title">일정 내용</label>
@@ -90,6 +93,7 @@ export default function Calendar() {
                 name="title"
                 id="title"
                 onChange={handleChange}
+                placeholder={"간단한 내용을 작성해주세요"}
                 value={title}
               ></InputBox>
               <label htmlFor="start">시작일</label>
@@ -203,6 +207,8 @@ const XButton = styled.div`
   &:hover {
     cursor: pointer;
   }
+  display: flex;
+  justify-content: right;
 `;
 
 const Box = styled.div`

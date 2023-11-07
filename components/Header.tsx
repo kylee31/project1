@@ -1,12 +1,16 @@
 import Button from "@/common/Button";
-import { useSearchWord } from "@/states/stores";
+import { useIsLogIn, useIsLogInModal, useSearchWord } from "@/states/stores";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
+import Modal from "./Modal";
 
 export default function Header() {
   const [inputValue, setInputValue] = useState("");
   const { searchWord, setSearchWord } = useSearchWord();
+  //로그인 처리 상태관리
+  const { isLogIn, setIsLogIn } = useIsLogIn();
+  const { isLogInModal, setIsLogInModal } = useIsLogInModal();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -25,36 +29,45 @@ export default function Header() {
     }
   };
 
+  const handleLogin = () => {
+    setIsLogInModal(true);
+  };
+
   // useEffect(() => {
   //   // console.log(searchWord);
   // }, [searchWord]);
 
   return (
-    <Box>
-      <LContainer>
-        <Image
-          src="/imgs/logo.png"
-          alt="logo"
-          priority
-          width={400}
-          height={43}
-        />
-        <InputSet>
-          <InputBox
-            placeholder="경기도 고양시 일산서구"
-            value={inputValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
+    <>
+      <Box>
+        <LContainer>
+          <Image
+            src="/imgs/logo.png"
+            alt="logo"
+            priority
+            width={400}
+            height={43}
           />
-          <AirPlaneBtn onClick={handleSubmit}>
-            <Image src="/imgs/airport.png" alt="airport" priority fill />
-          </AirPlaneBtn>
-        </InputSet>
-      </LContainer>
-      <RContainer>
-        <Button wid={6}>Log In</Button>
-      </RContainer>
-    </Box>
+          <InputSet>
+            <InputBox
+              placeholder="경기도 고양시 일산서구"
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+            />
+            <AirPlaneBtn onClick={handleSubmit}>
+              <Image src="/imgs/airport.png" alt="airport" priority fill />
+            </AirPlaneBtn>
+          </InputSet>
+        </LContainer>
+        <RContainer>
+          <Button wid={6} onClick={handleLogin}>
+            {isLogIn ? `로그아웃` : `로그인`}
+          </Button>
+        </RContainer>
+      </Box>
+      {isLogInModal && <Modal />}
+    </>
   );
 }
 const Box = styled.div`

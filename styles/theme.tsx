@@ -7,6 +7,7 @@ const theme = {
     white: "#ffffff",
     black: "#000000",
     lightgray: "#f4f4f4",
+    middlegray: "lightgray",
     gray: "#808080",
   },
   weight: {
@@ -24,10 +25,12 @@ const theme = {
     smaller: "0.6rem",
     small: "0.8rem",
     medium: "1rem",
+    semilarge: "1.3rem",
     large: "2rem",
   },
 };
 
+//type 지정 styled.d.ts overrding
 export type Theme = typeof theme;
 
 export default theme;
