@@ -15,9 +15,10 @@ export default function Map() {
 
   useEffect(() => {
     const mapScript = document.createElement("script");
+    const appKey = `caa8fa29ecb821323f9e1dd432bc4b07`;
 
     mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=55108fa0e0ce7fdd2ee0c3bd508dea38&libraries=services&autoload=false`;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${appKey}&libraries=services&autoload=false`;
 
     document.head.appendChild(mapScript);
 
