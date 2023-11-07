@@ -2,12 +2,12 @@
 
 import StyledComponentsRegistry from "../lib/registry";
 import { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
+import theme from "@/styles/theme";
 
-const Providers = (props: React.PropsWithChildren) => {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <StyledComponentsRegistry>
-      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </StyledComponentsRegistry>
   );
 };

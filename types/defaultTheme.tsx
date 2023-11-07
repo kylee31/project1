@@ -1,4 +1,6 @@
-export const defaultTheme = {
+import { Theme } from "@/styles/theme";
+
+const defaultTheme = {
   mainColors: {
     blue: "#70A1FF",
     green: "#7EDE76",
@@ -12,7 +14,7 @@ export const defaultTheme = {
   weight: {
     thin: 100,
     exLight: 200,
-    ligth: 300,
+    light: 300, // 수정: "ligth" 대신 "light"로 수정
     regular: 400,
     medium: 500,
     semiBold: 600,
@@ -27,5 +29,5 @@ export const defaultTheme = {
     large: "2rem",
   },
 };
-// exporting them type of defautlTheme
-export type Theme = typeof defaultTheme;
+
+export type defaultTheme = Theme;
