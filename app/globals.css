@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-	font-family: 'Pretendard'
+	font-family: 'Pretendard';
 }
 
 html,
@@ -18,4 +18,6 @@ body {
 
 body{
 	/* font-family: 'Pretendard' */
+  min-width:70rem;
+  overflow-y:hidden;
 }
