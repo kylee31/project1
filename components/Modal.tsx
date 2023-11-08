@@ -25,15 +25,9 @@ export default function Modal() {
         <LogInBox>
           소셜 계정으로 로그인
           {/* 임시 로그인 스타일 */}
-          <div
-            style={{
-              width: "4rem",
-              height: "4rem",
-              borderRadius: "50%",
-              backgroundColor: "gray",
-              marginTop: "1.5rem",
-            }}
-          ></div>
+          <Account>
+            <Image src="/imgs/google.png" alt="google" width={40} height={40} />
+          </Account>
         </LogInBox>
       </ModalBox>
     </Container>
@@ -108,3 +102,15 @@ const LogInBox = styled.div`
   font-size: ${(props) => props.theme.size.semilarge};
   font-weight: ${(props) => props.theme.weight.bold};
 `;
+
+const Account = styled.div`
+  width: 4rem;
+  height:4rem;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.colors.lightgray};
+  border:2px solid lightgray;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}}`;
