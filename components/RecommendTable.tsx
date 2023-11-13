@@ -24,9 +24,9 @@ export default function RecommendTable() {
 
   useEffect(() => {
     const HOST = "http://api.kcisa.kr/openapi/API_CNV_060/request";
-    const SERVICE_KEY = "8f0d30a9-ff1f-4453-980a-2df98ca7dc3a";
+    const appKey = process.env.NEXT_PUBLIC_RECOMMEND_KEY;
 
-    const requestUrl = `${HOST}?serviceKey=${SERVICE_KEY}&keyword=${searchWord}`;
+    const requestUrl = `${HOST}?serviceKey=${appKey}&keyword=${searchWord}`;
 
     const getData = async () => {
       await axios

@@ -15,7 +15,7 @@ export default function Map() {
 
   useEffect(() => {
     const mapScript = document.createElement("script");
-    const appKey = `caa8fa29ecb821323f9e1dd432bc4b07`;
+    const appKey = process.env.NEXT_PUBLIC_MAP_KEY;
 
     mapScript.async = true;
     mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${appKey}&libraries=services&autoload=false`;
