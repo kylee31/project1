@@ -24,4 +24,4 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             npm run build
-            pm2 reload all
+            pm2 reload tarvel
