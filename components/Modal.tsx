@@ -3,10 +3,17 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function Modal() {
-  const { isLogInModal, setIsLogInModal } = useIsLogInModal();
+  const { setIsLogInModal } = useIsLogInModal();
+
   const handleModal = () => {
     setIsLogInModal(false);
   };
+
+  const handleLogin = () => {
+    console.log("google login");
+    window.confirm("updating..");
+  };
+
   //로그인 토큰 관리
   return (
     <Container>
@@ -26,7 +33,13 @@ export default function Modal() {
           소셜 계정으로 로그인
           {/* 임시 로그인 스타일 */}
           <Account>
-            <Image src="/imgs/google.png" alt="google" width={40} height={40} />
+            <Image
+              src="/imgs/google.png"
+              alt="google"
+              width={40}
+              height={40}
+              onClick={handleLogin}
+            />
           </Account>
         </LogInBox>
       </ModalBox>
@@ -113,4 +126,7 @@ const Account = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover{
+    cursor:pointer;
+  }
 }}`;
