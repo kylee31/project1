@@ -10,8 +10,8 @@ export default function Modal() {
   };
 
   const handleLogin = () => {
-    console.log("google login");
-    window.confirm("updating..");
+    // console.log("google login");
+    window.confirm("updating👩‍💻");
   };
 
   //로그인 토큰 관리
