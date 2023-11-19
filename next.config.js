@@ -9,12 +9,12 @@ const nextConfig = {
         return [
             {
                 source: "/api/recommend/:path*",
-                destination: "http://api.kcisa.kr/openapi/API_CNV_060/request/:path*",
+                destination: "https://api.kcisa.kr/openapi/API_CNV_060/request/:path*",
             },
-            {
-                source: "/api/weather/:path*",
-                destination: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst/:path*"
-            },
+            // {
+            //     source: "/api/weather/:path*",
+            //     destination: "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst/:path*"
+            // },
         ];
     },
 }

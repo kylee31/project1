@@ -23,7 +23,7 @@ export default function RecommendTable() {
   const { isToggle } = useIsToggle();
 
   useEffect(() => {
-    const HOST = "http://api.kcisa.kr/openapi/API_CNV_060/request";
+    const HOST = "https://api.kcisa.kr/openapi/API_CNV_060/request";
     const appKey = process.env.NEXT_PUBLIC_RECOMMEND_KEY;
 
     const requestUrl = `${HOST}?serviceKey=${appKey}&keyword=${searchWord}`;
