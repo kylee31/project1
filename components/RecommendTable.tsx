@@ -1,9 +1,9 @@
 import ReactTable from "@/common/ReactTable";
 import {
-  useIsGetRecommendData,
-  useIsToggle,
-  useRecommendData,
-  useSearchWord,
+  useIsGetRecommendDataStore,
+  useIsToggleStore,
+  useRecommendDataStore,
+  useSearchWordStore,
 } from "@/states/stores";
 import axios from "axios";
 import { useEffect } from "react";
@@ -17,10 +17,11 @@ export default function RecommendTable() {
     { accessor: "viewCnt", Header: "조회수", width: "5%" },
   ];
 
-  const { searchWord } = useSearchWord();
-  const { recommendData, setRecommendData } = useRecommendData();
-  const { isGetRecommendData, setIsGetRecommendData } = useIsGetRecommendData();
-  const { isToggle } = useIsToggle();
+  const { searchWord } = useSearchWordStore();
+  const { recommendData, setRecommendData } = useRecommendDataStore();
+  const { isGetRecommendData, setIsGetRecommendData } =
+    useIsGetRecommendDataStore();
+  const { isToggle } = useIsToggleStore();
 
   useEffect(() => {
     const HOST = "http://api.kcisa.kr/openapi/API_CNV_060/request";

@@ -1,16 +1,20 @@
 import Button from "@/common/Button";
-import { useIsLogIn, useIsLogInModal, useSearchWord } from "@/states/stores";
+import {
+  useIsLogInStore,
+  useIsLogInModalStore,
+  useSearchWordStore,
+} from "@/states/stores";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import Modal from "./Modal";
 
 export default function Header() {
   const [inputValue, setInputValue] = useState("");
-  const { searchWord, setSearchWord } = useSearchWord();
+  const { searchWord, setSearchWord } = useSearchWordStore();
   //로그인 처리 상태관리
-  const { isLogIn, setIsLogIn } = useIsLogIn();
-  const { isLogInModal, setIsLogInModal } = useIsLogInModal();
+  const { isLogIn } = useIsLogInStore();
+  const { isLogInModal, setIsLogInModal } = useIsLogInModalStore();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
