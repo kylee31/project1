@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useTodayDate } from "@/states/stores";
+import { useTodayDateStore } from "@/states/stores";
 
 export default function TodayWeather() {
   //오늘 날짜
@@ -12,7 +12,7 @@ export default function TodayWeather() {
       ? "0" + today.getDate().toString()
       : today.getDate().toString(); // 날짜
 
-  const { todayDate, setTodayDate } = useTodayDate();
+  const { todayDate, setTodayDate } = useTodayDateStore();
   const [getDatas, setGetDatas] = useState<any[]>([]);
   const [isgetDataSuccess, setIsGetDataSuccess] = useState(false);
 
