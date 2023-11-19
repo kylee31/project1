@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { useEffect } from "react";
-import { useIsToggle, useSearchWord } from "@/states/stores";
+import { useIsToggleStore, useSearchWordStore } from "@/states/stores";
 
 declare global {
   interface Window {
@@ -10,8 +10,8 @@ declare global {
 }
 
 export default function Map() {
-  const { searchWord } = useSearchWord();
-  const { isToggle } = useIsToggle();
+  const { searchWord } = useSearchWordStore();
+  const { isToggle } = useIsToggleStore();
 
   useEffect(() => {
     const mapScript = document.createElement("script");

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import RecommendTable from "./RecommendTable";
 import Weather from "./Weather";
-import { useIsToggle, useTapMenu } from "@/states/stores";
+import { useIsToggleStore, useTapMenuStore } from "@/states/stores";
 
 export default function RecommendField() {
-  const { tapMenu, setTapMenu } = useTapMenu();
+  const { tapMenu, setTapMenu } = useTapMenuStore();
   //toggle에 따라 위의 map컴포넌트 height 조절해야 하므로 store로 상태관리
-  const { isToggle, setIsToggle } = useIsToggle();
+  const { isToggle, setIsToggle } = useIsToggleStore();
   const menuList = ["추천장소", "날씨"];
 
   const selectMenu = (idx: number) => {

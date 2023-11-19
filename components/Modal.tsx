@@ -1,9 +1,9 @@
-import { useIsLogInModal } from "@/states/stores";
+import { useIsLogInModalStore } from "@/states/stores";
 import Image from "next/image";
 import styled from "styled-components";
 
 export default function Modal() {
-  const { setIsLogInModal } = useIsLogInModal();
+  const { setIsLogInModal } = useIsLogInModalStore();
 
   const handleModal = () => {
     setIsLogInModal(false);

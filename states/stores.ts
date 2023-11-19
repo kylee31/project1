@@ -8,11 +8,11 @@ interface SearchWord{
   setSearchWord: (txt: string) => void;
 }
 
-export const useSearchWord=create<SearchWord>(set=>({
+export const useSearchWordStore=create<SearchWord>(set=>({
     searchWord:"대한민국",
     setSearchWord:(txt)=>{
         set(()=>({searchWord:txt}));
-    },
+    }
 }))
 
 //탭 메뉴 선택(추천행사, 날씨 정보 로딩)
@@ -21,7 +21,7 @@ interface TapMenu{
   setTapMenu:(num:number)=>void;
 }
 
-export const useTapMenu=create<TapMenu>(set=>({
+export const useTapMenuStore=create<TapMenu>(set=>({
   tapMenu:0,
   setTapMenu:(num)=>{
     set(()=>({tapMenu:num}))
@@ -34,7 +34,7 @@ interface TodayDate{
   setTodayDate:(txt:string)=>void;
 }
 
-export const useTodayDate=create<TodayDate>(set=>({
+export const useTodayDateStore=create<TodayDate>(set=>({
   todayDate:"19980310",
   setTodayDate:(txt)=>{set(()=>({todayDate:txt}))}
 }))
@@ -45,7 +45,7 @@ interface IsToggle{
   setIsToggle:(tog:boolean)=>void;
 }
 
-export const useIsToggle=create<IsToggle>(set=>({
+export const useIsToggleStore=create<IsToggle>(set=>({
   isToggle:true,
   setIsToggle:(tog)=>{set(()=>({isToggle:tog}))}
 }))
@@ -56,7 +56,7 @@ interface RecommendData{
   setRecommendData:(obj:RecommendType)=>void;
 }
 
-export const useRecommendData=create<RecommendData>(set=>({
+export const useRecommendDataStore=create<RecommendData>(set=>({
   recommendData:
   [{
     spatialCoverage: "",
@@ -73,7 +73,7 @@ interface IsGetRecommendData{
   setIsGetRecommendData:(tog:boolean)=>void;
 }
 
-export const useIsGetRecommendData=create<IsGetRecommendData>(set=>({
+export const useIsGetRecommendDataStore=create<IsGetRecommendData>(set=>({
   isGetRecommendData:true,
   setIsGetRecommendData:(tog)=>{set(()=>({isGetRecommendData:tog}))}
 }))
@@ -84,7 +84,7 @@ interface IsLogIn{
   setIsLogIn:(tog:boolean)=>void;
 }
 
-export const useIsLogIn=create<IsLogIn>(set=>({
+export const useIsLogInStore=create<IsLogIn>(set=>({
   isLogIn:false,
   setIsLogIn:(tog)=>(set(()=>({isLogIn:tog})))
 }))
@@ -95,7 +95,7 @@ interface IsLogInModal{
   setIsLogInModal:(tog:boolean)=>void
 }
 
-export const useIsLogInModal=create<IsLogInModal>(set=>({
+export const useIsLogInModalStore=create<IsLogInModal>(set=>({
   isLogInModal:false,
   setIsLogInModal:(tog)=>(set(()=>({isLogInModal:tog})))
 }))
