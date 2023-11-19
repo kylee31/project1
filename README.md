@@ -22,7 +22,7 @@
     <image src="https://github.com/kylee31/travel_plan/assets/106156087/c5cbf04d-4654-48c3-a4dd-a8fc38f20659.png" width="600">
 <br/><br/>
 ## 링크
-<h3>http://travel-plan.kro.kr</h3>
+<h3>https://travel-plan.kro.kr</h3>
 <br/>
 
 ## 현재 이슈, 코드 및 기능 개선사항
