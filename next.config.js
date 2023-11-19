@@ -9,7 +9,7 @@ const nextConfig = {
         return [
             {
                 source: "/api/recommend/:path*",
-                destination: "https://api.kcisa.kr/openapi/API_CNV_060/request/:path*",
+                destination: "http://api.kcisa.kr/openapi/API_CNV_060/request/:path*",
             },
             // {
             //     source: "/api/weather/:path*",
