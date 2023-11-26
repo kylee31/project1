@@ -99,3 +99,13 @@ export const useIsLogInModalStore=create<IsLogInModal>(set=>({
   isLogInModal:false,
   setIsLogInModal:(tog)=>(set(()=>({isLogInModal:tog})))
 }))
+
+interface IsClick{
+  isClick:boolean,
+  setIsClick:(tog:boolean)=>void
+}
+
+export const useIsClick=create<IsClick>(set=>({
+  isClick:false,
+  setIsClick:(tog)=>(set(()=>({isClick:tog})))
+}))
