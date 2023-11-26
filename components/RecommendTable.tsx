@@ -1,5 +1,6 @@
 import ReactTable from "@/common/ReactTable";
 import {
+  useIsClick,
   useIsGetRecommendDataStore,
   useIsToggleStore,
   useRecommendDataStore,
@@ -22,6 +23,7 @@ export default function RecommendTable() {
   const { isGetRecommendData, setIsGetRecommendData } =
     useIsGetRecommendDataStore();
   const { isToggle } = useIsToggleStore();
+  const { isClick } = useIsClick();
 
   useEffect(() => {
     const HOST = "http://api.kcisa.kr/openapi/API_CNV_060/request";
@@ -47,7 +49,7 @@ export default function RecommendTable() {
 
     //toggle ture일때만 검색하도록
     isToggle && getData();
-  }, [searchWord]);
+  }, [searchWord, isClick]);
 
   return (
     <>
