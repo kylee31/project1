@@ -46,7 +46,14 @@ export default function Calendar() {
   };
 
   const handleEvent = () => {
-    const newEvent = { ...inputs, id: id };
+    //시간 없이 시작일과 종료일을 입력할 경우 종료일의 00시00분을 종료 시점으로 봐 종료일 전에 막대가 끝남.
+    //즉, end 값을 exclusive하게 처리함.
+    //end 시간 추가(24:00:00)로 수정하여 종료일에 막대 끝나도록 수정
+    const newEvent = {
+      ...inputs,
+      id: id,
+      end: `${inputs.end} 24:00:00`,
+    };
     setInputs({
       title: "",
       start: "",
@@ -78,6 +85,7 @@ export default function Calendar() {
         locale={"ko"}
         events={eventData}
         eventClick={handelDelete}
+        displayEventTime={false}
       />
       {isModal && (
         <ModalBox>
@@ -101,16 +109,16 @@ export default function Calendar() {
                 name="start"
                 id="start"
                 onChange={handleChange}
-                placeholder={"2023-11-06"}
                 value={start}
+                type="date"
               ></InputBox>
               <label htmlFor="end">종료일</label>
               <InputBox
                 name="end"
                 id="end"
                 onChange={handleChange}
-                placeholder={"2023-11-09"}
                 value={end}
+                type="date"
               ></InputBox>
               <AddButton onClick={handleEvent}>추가</AddButton>
             </Box>
