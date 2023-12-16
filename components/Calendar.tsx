@@ -54,17 +54,18 @@ export default function Calendar() {
       id: id,
       end: `${inputs.end} 24:00:00`,
     };
+    newEvent.title !== "" && newEvent.title !== "" && newEvent.title !== ""
+      ? (setEventData([newEvent, ...eventData]),
+        setId((Number(id) + 1).toString()),
+        handleClick())
+      : window.alert("빈 칸을 다 채워주세요!");
+    //값 비우기
     setInputs({
       title: "",
       start: "",
       end: "",
       // editable: true,
     });
-    newEvent.title !== "" && newEvent.title !== "" && newEvent.title !== ""
-      ? (setEventData([newEvent, ...eventData]),
-        setId((Number(id) + 1).toString()),
-        handleClick())
-      : window.alert("빈 칸을 다 채워주세요!");
   };
 
   const handelDelete = (info: EventClickArg) => {
@@ -136,6 +137,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  //fullcalendar css
   .fc {
     width: 90%;
     height: 90%;
@@ -195,7 +197,7 @@ const ModalBox = styled.div`
 const Modal = styled.div`
   z-index: 10;
   width: 60%;
-  height: 50%;
+  height: 55%;
   background-color: white;
   padding: 0.5rem;
   display: flex;
@@ -235,8 +237,8 @@ const InputBox = styled.input`
 `;
 
 const AddButton = styled.button`
-  // height: 1rem;
   margin: 0 4rem;
+  padding: 0.2rem;
   border: 0;
   background-color: gray;
   border-radius: 1rem;
