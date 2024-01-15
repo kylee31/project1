@@ -21,6 +21,10 @@
     <br/>▼ 추천장소 section on/off로 지도 확대 가능<br>
     <image src="https://github.com/kylee31/travel_plan/assets/106156087/c5cbf04d-4654-48c3-a4dd-a8fc38f20659.png" width="600">
 <br/><br/>
+## 사용 API
+[문화공공데이터광장-문화체육관광부_추천여행지](https://www.culture.go.kr/data/openapi/openapiView.do?id=581&category=D&gubun=A)<br/>
+[Kakao 지도 Web API](https://apis.map.kakao.com/web/)
+<br/><br/>
 ## 링크
 <h3>http://travel-plan.kro.kr</h3>
 <br/>
