@@ -69,8 +69,15 @@ export default function Header() {
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
+            {/*Image 컴포넌트에서 fill 속성 사용시 sizes 속성 필수*/}
             <AirPlaneBtn onClick={handleSubmit}>
-              <Image src="/imgs/airport.png" alt="airport" priority fill />
+              <Image
+                src="/imgs/airport.png"
+                alt="airport"
+                priority
+                fill
+                sizes="(max-width: 1200px) 100vw"
+              />
             </AirPlaneBtn>
           </InputSet>
         </LContainer>
