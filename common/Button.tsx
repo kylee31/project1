@@ -10,7 +10,7 @@ const Button = ({
   onClick: () => void;
 }) => {
   return (
-    <Btn wid={wid} onClick={onClick}>
+    <Btn $wid={wid} onClick={onClick}>
       {children}
     </Btn>
   );
@@ -18,8 +18,8 @@ const Button = ({
 
 export default Button;
 
-const Btn = styled.button<{ wid: number }>`
-  width: ${(props) => props.wid}rem;
+const Btn = styled.button<{ $wid: number }>`
+  width: ${(props) => props.$wid}rem;
   height: 100%;
   background-color: ${(props) => props.theme.colors.black};
   color: ${(props) => props.theme.colors.white};
