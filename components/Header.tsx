@@ -6,7 +6,7 @@ import {
   useIsClick,
 } from "@/states/stores";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import Modal from "./Modal";
 
@@ -64,7 +64,7 @@ export default function Header() {
           />
           <InputSet>
             <InputBox
-              placeholder="경기도 고양시 일산서구"
+              placeholder="서울"
               value={inputValue}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
@@ -74,9 +74,9 @@ export default function Header() {
               <Image
                 src="/imgs/airport.png"
                 alt="airport"
-                priority
                 fill
                 sizes="(max-width: 1200px) 100vw"
+                loading="lazy"
               />
             </AirPlaneBtn>
           </InputSet>

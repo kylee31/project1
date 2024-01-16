@@ -48,7 +48,6 @@ export default function Map() {
     };
     mapScript.addEventListener("load", onLoadKakaoMap);
   }, [searchWord, isToggle]);
-
   return (
     <Container $isToggle={isToggle}>
       <MapContainer id="map"></MapContainer>
@@ -63,4 +62,5 @@ const Container = styled.div<{ $isToggle: boolean }>`
 const MapContainer = styled.div`
   width: 100%;
   height: 100%;
+  background-color: lightblue;
 `;
