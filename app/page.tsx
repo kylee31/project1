@@ -17,7 +17,13 @@ export default function Main() {
 
   return (
     <Container>
-      <Image width={100} height={100} src={"/imgs/travel.png"} alt="logo" />
+      <Image
+        priority
+        width={100}
+        height={100}
+        src={"/imgs/travel.png"}
+        alt="logo"
+      />
       <Txt $size={2}>TO TRAVEL IS TO LIVE!</Txt>
       <Spinner>
         <ClockLoader color="black" size={60} />
