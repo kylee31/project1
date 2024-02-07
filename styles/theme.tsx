@@ -9,6 +9,7 @@ const theme = {
     lightgray: "#f4f4f4",
     middlegray: "lightgray",
     gray: "#808080",
+    burgundy: "#ae5353",
   },
   weight: {
     thin: 100,

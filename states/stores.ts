@@ -109,3 +109,14 @@ export const useIsClick=create<IsClick>(set=>({
   isClick:false,
   setIsClick:(tog)=>(set(()=>({isClick:tog})))
 }))
+
+//추천장소 시간
+interface NowHours{
+  nowHours:number,
+  setNowHours:(hours:number)=>void;
+}
+
+export const useNowHours=create<NowHours>(set=>({
+  nowHours:new Date().getHours(),
+  setNowHours:(hours)=>(set(()=>({nowHours:hours})))
+}))
