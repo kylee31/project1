@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import RecommendTable from "./RecommendTable";
-import Weather from "./Weather";
+import RecommendTable from "./recommend/RecommendTable";
+import Weather from "./weather/Weather";
 import { useIsToggleStore, useTapMenuStore } from "@/states/stores";
 
 export default function RecommendField() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import TodayWeather from "./weather/TodayWeather";
+import TodayWeather from "./TodayWeather";
 
 export default function Weather() {
   //단기예보 데이터 (단기- 오늘)

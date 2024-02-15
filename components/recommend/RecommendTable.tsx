@@ -3,12 +3,14 @@ import {
   useIsClick,
   useIsGetRecommendDataStore,
   useIsToggleStore,
+  useNowHours,
   useRecommendDataStore,
   useSearchWordStore,
 } from "@/states/stores";
 import axios from "axios";
 import { useEffect } from "react";
 import styled from "styled-components";
+import Alert from "../Alert";
 
 export default function RecommendTable() {
   const columns = [
@@ -24,6 +26,7 @@ export default function RecommendTable() {
     useIsGetRecommendDataStore();
   const { isToggle } = useIsToggleStore();
   const { isClick } = useIsClick();
+  const { nowHours } = useNowHours();
 
   useEffect(() => {
     const HOST = "http://api.kcisa.kr/openapi/API_CNV_060/request";
@@ -53,35 +56,41 @@ export default function RecommendTable() {
 
   return (
     <>
-      {searchWord === "대한민국" && (
-        <FirstBox>
-          <div>
-            추천 장소를 보고 싶다면,
-            <span style={{ color: "red" }}> {"지역명(단어)"}</span>으로
-            검색해주세요! 🧐
-          </div>
-          <div style={{ color: "gray" }}> (ex. 서울, 제주, 경기, 고양)</div>
-        </FirstBox>
-      )}
-      {searchWord !== "대한민국" && isGetRecommendData && (
-        <ReactTable
-          columns={columns}
-          data={recommendData.map((items) => ({
-            spatialCoverage:
-              items.spatialCoverage !== null ? items.spatialCoverage : ".",
-            title: items.title !== null ? items.title : ".",
-            reference: items.reference !== null ? items.reference : ".",
-            viewCnt: items.viewCnt !== null ? items.viewCnt : ".",
-          }))}
-        />
-      )}
-      {isGetRecommendData === false && (
-        <NoDataBox>
-          이 곳에는 아직 추천장소가 없어요😥
-          <div
-            style={{ color: "gray" }}
-          >{`(Tip! 조금 더 넓은 지역명으로 검색해보세요)`}</div>
-        </NoDataBox>
+      {nowHours >= 0 && nowHours <= 7 ? (
+        <Alert />
+      ) : (
+        <>
+          {searchWord === "대한민국" && (
+            <FirstBox>
+              <div>
+                추천 장소를 보고 싶다면,
+                <span style={{ color: "red" }}> {"지역명(단어)"}</span>으로
+                검색해주세요! 🧐
+              </div>
+              <div style={{ color: "gray" }}> (ex. 서울, 제주, 경기, 고양)</div>
+            </FirstBox>
+          )}
+          {searchWord !== "대한민국" && isGetRecommendData && (
+            <ReactTable
+              columns={columns}
+              data={recommendData.map((items) => ({
+                spatialCoverage:
+                  items.spatialCoverage !== null ? items.spatialCoverage : ".",
+                title: items.title !== null ? items.title : ".",
+                reference: items.reference !== null ? items.reference : ".",
+                viewCnt: items.viewCnt !== null ? items.viewCnt : ".",
+              }))}
+            />
+          )}
+          {isGetRecommendData === false && (
+            <NoDataBox>
+              이 곳에는 아직 추천장소가 없어요😥
+              <div
+                style={{ color: "gray" }}
+              >{`(Tip! 조금 더 넓은 지역명으로 검색해보세요)`}</div>
+            </NoDataBox>
+          )}
+        </>
       )}
     </>
   );
