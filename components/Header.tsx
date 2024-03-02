@@ -20,7 +20,6 @@ export default function Header() {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-    handleClick();
   };
 
   const handleSubmit = async () => {
