@@ -34,16 +34,32 @@ export default function RecommendTable() {
 
     const requestUrl = `${HOST}?serviceKey=${appKey}&keyword=${searchWord}`;
 
+    // const getData = async () => {
+    //   await axios
+    //     .get(requestUrl)
+    //     .then((res) =>
+    //       res.data.response.body.items !== null
+    //         ? (setRecommendData(res.data.response.body.items.item),
+    //           setIsGetRecommendData(true))
+    //         : setIsGetRecommendData(false)
+    //     )
+    //     .catch((err) => console.log(err));
+    // };
+
     const getData = async () => {
-      await axios
-        .get(requestUrl, {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      await fetch(requestUrl, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Network response was not ok");
+          return res.json();
         })
-        .then((res) =>
-          res.data.response.body.items !== null
-            ? (setRecommendData(res.data.response.body.items.item),
+        .then((data) =>
+          data.response.body.items !== null
+            ? (setRecommendData(data.response.body.items.item),
               setIsGetRecommendData(true))
             : setIsGetRecommendData(false)
         )

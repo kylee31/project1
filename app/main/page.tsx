@@ -1,6 +1,5 @@
 "use client";
 
-import Alert from "@/components/Alert";
 import Header from "@/components/Header";
 import LeftSection from "@/section/LeftSection";
 import RightSection from "@/section/RightSection";
