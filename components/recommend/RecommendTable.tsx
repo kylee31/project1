@@ -1,3 +1,5 @@
+"use client";
+
 import ReactTable from "@/common/ReactTable";
 import {
   useIsClick,
@@ -52,6 +54,7 @@ export default function RecommendTable() {
         headers: {
           Accept: "application/json",
         },
+        // cache: "no-store", 첫페이지가 SSG이므로 옵션 필요X?
       })
         .then((res) => {
           if (!res.ok) throw new Error("Network response was not ok");
