@@ -31,7 +31,7 @@ export default function RecommendTable() {
   const { nowHours } = useNowHours();
 
   useEffect(() => {
-    const HOST = "http://api.kcisa.kr/openapi/API_CNV_060/request";
+    const HOST = "http://api.kcisa.kr/openapi/API_CNV_061/request";
     const appKey = process.env.NEXT_PUBLIC_RECOMMEND_KEY;
 
     const requestUrl = `${HOST}?serviceKey=${appKey}&keyword=${searchWord}`;
@@ -54,7 +54,7 @@ export default function RecommendTable() {
         headers: {
           Accept: "application/json",
         },
-        // cache: "no-store", 첫페이지가 SSG이므로 옵션 필요X?
+        //cache: "no-store", default. 첫페이지가 SSG이므로 옵션 필요X?
       })
         .then((res) => {
           if (!res.ok) throw new Error("Network response was not ok");
