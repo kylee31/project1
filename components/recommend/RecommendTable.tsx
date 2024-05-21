@@ -8,7 +8,7 @@ import {
   useNowHours,
   useRecommendDataStore,
   useSearchWordStore,
-} from "@/states/stores";
+} from "@/services/states/stores";
 import { useEffect } from "react";
 import styled from "styled-components";
 import Alert from "../Alert";

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { useEffect } from "react";
-import { useIsToggleStore, useSearchWordStore } from "@/states/stores";
+import { useIsToggleStore, useSearchWordStore } from "@/services/states/stores";
 
 declare global {
   interface Window {
