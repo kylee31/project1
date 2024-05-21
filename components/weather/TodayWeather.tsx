@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useTodayDateStore } from "@/states/stores";
+import { useTodayDateStore } from "@/services/states/stores";
 
 export default function TodayWeather() {
   //오늘 날짜

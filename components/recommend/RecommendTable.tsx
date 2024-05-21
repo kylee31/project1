@@ -1,6 +1,6 @@
 "use client";
 
-import ReactTable from "@/common/ReactTable";
+import ReactTable from "@/components/common/ReactTable";
 import {
   useIsClick,
   useIsGetRecommendDataStore,
@@ -8,20 +8,16 @@ import {
   useNowHours,
   useRecommendDataStore,
   useSearchWordStore,
-} from "@/states/stores";
-import axios from "axios";
+} from "@/services/states/stores";
 import { useEffect } from "react";
 import styled from "styled-components";
 import Alert from "../Alert";
+import { getRecommendData } from "@/services/recommendService";
+import { columns } from "@/services/data/recommendData";
+
+const COLUMNS = columns;
 
 export default function RecommendTable() {
-  const columns = [
-    { accessor: "spatialCoverage", Header: "관련위치", width: "20%" },
-    { accessor: "title", Header: "제목", width: "30%" },
-    { accessor: "reference", Header: "관련문의", width: "20%" },
-    { accessor: "viewCnt", Header: "조회수", width: "5%" },
-  ];
-
   const { searchWord } = useSearchWordStore();
   const { recommendData, setRecommendData } = useRecommendDataStore();
   const { isGetRecommendData, setIsGetRecommendData } =
@@ -31,51 +27,19 @@ export default function RecommendTable() {
   const { nowHours } = useNowHours();
 
   useEffect(() => {
-    const HOST = "http://api.kcisa.kr/openapi/API_CNV_061/request";
-    const appKey = process.env.NEXT_PUBLIC_RECOMMEND_KEY;
-
-    const requestUrl = `${HOST}?serviceKey=${appKey}&keyword=${searchWord}`;
-
-    // const getData = async () => {
-    //   await axios
-    //     .get(requestUrl)
-    //     .then((res) =>
-    //       res.data.response.body.items !== null
-    //         ? (setRecommendData(res.data.response.body.items.item),
-    //           setIsGetRecommendData(true))
-    //         : setIsGetRecommendData(false)
-    //     )
-    //     .catch((err) => console.log(err));
-    // };
-
     const getData = async () => {
-      await fetch(requestUrl, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-        //cache: "no-store", default. 첫페이지가 SSG이므로 옵션 필요X?
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error("Network response was not ok");
-          return res.json();
-        })
-        .then((data) =>
-          data.response.body.items !== null
-            ? (setRecommendData(data.response.body.items.item),
-              setIsGetRecommendData(true))
-            : setIsGetRecommendData(false)
-        )
-        .catch((err) => console.log(err));
+      const data = await getRecommendData({ searchWord });
+      data !== null
+        ? (setRecommendData(data), setIsGetRecommendData(true))
+        : setIsGetRecommendData(false);
     };
-
-    //toggle ture일때만 검색하도록
     isToggle && getData();
-  }, [searchWord, isClick]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchWord, isClick, isToggle]);
 
   return (
     <>
-      {nowHours >= 0 && nowHours <= 7 ? (
+      {nowHours >= 0 && nowHours <= 8 ? (
         <Alert />
       ) : (
         <>
@@ -91,7 +55,7 @@ export default function RecommendTable() {
           )}
           {searchWord !== "대한민국" && isGetRecommendData && (
             <ReactTable
-              columns={columns}
+              columns={COLUMNS}
               data={recommendData.map((items) => ({
                 spatialCoverage:
                   items.spatialCoverage !== null ? items.spatialCoverage : ".",

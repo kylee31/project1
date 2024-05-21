@@ -1,10 +1,10 @@
-import Button from "@/common/Button";
+import Button from "@/components/common/Button";
 import {
   useIsLogInStore,
   useIsLogInModalStore,
   useSearchWordStore,
   useIsClick,
-} from "@/states/stores";
+} from "@/services/states/stores";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";

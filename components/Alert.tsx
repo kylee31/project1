@@ -7,7 +7,7 @@ function Alert({}) {
     <Container>
       추천장소 검색 불가 시간
       <br />
-      (00:00~07:59)
+      (00:00~08:59)
     </Container>
   );
 }
