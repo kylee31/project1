@@ -61,31 +61,32 @@ yarn dev
 ## 트러블슈팅
 
 <details>
-<summary><b>Kakao Map API, 공공문화데이터 API 명세서 활용하여 데이터 제공</b></summary>
-[문제] <br/>
-[해결] <br/>
-[결과] <br/>
-</details>
-
-<details>
 <summary><b>SEO 최적화를 위한 컴포넌트 구조 재설계</b></summary>
 [문제] <br/>
-[해결] <br/>
+클라이언트 컴포넌트 경계로 인해 서버 컴포넌트 제한, SEO에 필요한 메타데이터 삽입 및 SSR 사용 방해<br/>
+[과정] <br/>
+1.SEO 최적화를 위해 페이지 컴포넌트 구조 재설계 결정 <br/>
+2. 기존 클라이언트 컴포넌트였던 페이지 컴포넌트를 비즈니스 로직 분리하여 서버 컴포넌트로 전환, 메타데이터 삽입할 수 있는 구조 및 SSR 방식으로 리팩토링<br/>
 [결과] <br/>
+페이지 별 필요한 메타데이터 포함하여 SEO 최적화 진행, 컴포넌트 구조화 단계 중요성 학습<br/>
 </details>
 
 <details>
-<summary><b>공공문화데이터 API CORS 에러 해결</b></summary>
+<summary><b>공공문화데이터 API CORS 에러config rewrites 옵션으로 API 리다이렉션 해결</b></summary>
 [문제] <br/>
-[해결] <br/>
+공공문화데이터 API 활용 중 CORS 에러 발생<br/>
+[과정] <br/>
+1. CORS 에러 해결하기 위해 Proxy 비교 및 그 외 방식 탐색 중 Next.js 환경설정 옵션 rewrites 학습<br/>
+2. 옵션으로 클라이언트 측에서 새로 매핑된 주소를 서버에 전송, 서버는 실제 주소에 요청 전달하여 해결<br/>
 [결과] <br/>
+API 요청 주소 리다이렉션 방식으로 CORS 에러 해결, 다양한 접근 방식 활용의 중요성 습득<br/>
 </details>
 
 <details>
 <summary><b>AWS 탄력적 IP 사용, 도메인 연결 및 EC2 배포, GitHub Actions로 CI/CD 구축</b></summary>
-[문제] <br/>
-[해결] <br/>
-[결과] <br/>
+[문제] 3개월 무료 도메인 연결 후 만료, 오류 등의 이유로 인스턴스 중지 시 IP 변동으로 인한 설정 과정 증가<br/>
+[과정] 탄력적 IP 사용으로 고정 IP 설정, 도메인 연결하여 배포<br/>
+[결과] 도메인 만료 후에도 동일한 IP 설정으로 추가 변경 과정 제거<br/>
 </details>
 
 <br/>
