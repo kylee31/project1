@@ -2,7 +2,6 @@
 
 import ReactTable from "@/components/common/ReactTable";
 import {
-  useIsClick,
   useIsGetRecommendDataStore,
   useIsToggleStore,
   useNowHours,
@@ -14,6 +13,7 @@ import styled from "styled-components";
 import Alert from "../Alert";
 import { getRecommendData } from "@/services/recommendService";
 import { columns } from "@/services/data/recommendData";
+import { useIsClick } from "@/services/states/loginStores";
 
 const COLUMNS = columns;
 

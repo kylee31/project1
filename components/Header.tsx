@@ -1,14 +1,14 @@
 import Button from "@/components/common/Button";
-import {
-  useIsLogInStore,
-  useIsLogInModalStore,
-  useSearchWordStore,
-  useIsClick,
-} from "@/services/states/stores";
+import { useSearchWordStore } from "@/services/states/stores";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import Modal from "./Modal";
+import {
+  useIsClick,
+  useIsLogInModalStore,
+  useIsLogInStore,
+} from "@/services/states/loginStores";
 
 export default function Header() {
   const [inputValue, setInputValue] = useState("");
