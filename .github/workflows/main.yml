@@ -6,6 +6,29 @@ on: # 아래 job을 실행시킬 상황
     branches: [ main ]
 
 jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+
+    - name: Lint
+      run: npx eslint .
+
+    - name: Type check
+      run: npx tsc --noEmit
+
   deploy:
     name: deploy
     runs-on: ubuntu-latest # 실행될 인스턴스 OS와 버전
