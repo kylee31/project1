@@ -1,4 +1,5 @@
-import { useIsLogInModalStore } from "@/services/states/stores";
+import { useIsLogInModalStore } from "@/services/states/loginStores";
+import {} from "@/services/states/stores";
 import Image from "next/image";
 import styled from "styled-components";
 
