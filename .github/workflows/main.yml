@@ -26,6 +26,9 @@ jobs:
     - name: Type check
       run: npx tsc --noEmit
 
+    - name: Build # 코드 품질 확인용
+      run: npm run build --dry-run
+
   deploy:
     name: deploy
     runs-on: ubuntu-latest # 실행될 인스턴스 OS와 버전
@@ -43,5 +46,5 @@ jobs:
             git pull origin main
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
-            npm run build
-            pm2 reload travel-plan
+            npm run build # 실제 배포용
+            pm2 reload travel-plan # 무중단 배포
