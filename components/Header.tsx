@@ -146,3 +146,76 @@ const AirPlaneBtn = styled.button`
     cursor: pointer;
   }
 `;
+
+/*
+//useRef 사용 방식
+
+export default function Header() {
+  //const [inputValue, setInputValue] = useState("");
+  const { searchWord, setSearchWord } = useSearchWordStore();
+  //로그인 처리 상태관리
+  const { isLogIn } = useIsLogInStore();
+  const { isLogInModal, setIsLogInModal } = useIsLogInModalStore();
+  const { isClick, setIsClick } = useIsClick();
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (inputRef.current) {
+      inputRef.current.value = e.target.value;
+    }
+    console.log(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    if (inputRef.current) {
+      const inputValue = inputRef.current.value;
+      setSearchWord(inputValue);
+      handleClick();
+      if (inputValue === "") {
+        setSearchWord("대한민국");
+        handleClick();
+      }
+    }
+  };
+
+  return (
+    <>
+      <Box>
+        <LContainer>
+          <Image
+            src="/imgs/logo.png"
+            alt="logo"
+            priority
+            width={400}
+            height={43}
+          />
+          <InputSet>
+            <InputBox
+              placeholder="서울"
+              ref={inputRef}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+            />
+            <AirPlaneBtn onClick={handleSubmit}>
+              <Image
+                src="/imgs/airport.png"
+                alt="airport"
+                fill
+                sizes="(max-width: 1200px) 100vw"
+                loading="lazy"
+              />
+            </AirPlaneBtn>
+          </InputSet>
+        </LContainer>
+        <RContainer>
+          <Button wid={6} onClick={handleLogin}>
+            {isLogIn ? `로그아웃` : `로그인`}
+          </Button>
+        </RContainer>
+      </Box>
+      {isLogInModal && <Modal />}
+    </>
+  );
+}
+*/
